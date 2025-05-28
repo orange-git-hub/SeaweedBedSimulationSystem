@@ -1,6 +1,6 @@
 
 class DBConnector:
-    def db_show(self):
+    def db_update(self,simulation_version):
 
         from notion_client import Client
         import datetime  # 日付の自動入力用
@@ -16,17 +16,17 @@ class DBConnector:
 
             properties_to_add = {
 
-                # 2. Text型: system_version
+                #simulation_version
                 "system_version": {
                     "title": [
                         {
                             "text": {
-                                "content": "1.0.0"  # ここに実際のシステムバージョン文字列を入れる
+                                "content": simulation_version  # ここに実際のシステムバージョン文字列を入れる
                             }
                         }
                     ]
                 },
-                # 3. ファイル&メディア型: config_text (外部URLを指定)
+                #config_text (外部URLを指定)
                 "config_text": {
                     "files": [
                         {
@@ -39,7 +39,7 @@ class DBConnector:
                         }
                     ]
                 },
-                # 4. ファイル&メディア型: result_text (外部URLを指定)
+                #result_text (外部URLを指定)
                 "result_text": {
                     "files": [
                         {
@@ -64,7 +64,7 @@ class DBConnector:
                     ]
                 },
 
-                # 5. 日付型: date
+                # date
                 "date": {
                     "date": {
                         "start": datetime.date.today().isoformat()  # 今日の日付をYYYY-MM-DD形式で設定

@@ -1,5 +1,14 @@
 import sys
 
+simulation_version = "0.0.1"
+"""
+    同じversionでシステムを動作させてもdbに結果は保存されないため注意
+    *.*.n:nは初期値の変更時などに1ずつ増加させる
+    *.n.*:nは既存の種に関するアルゴリズムの変更や、追加の際に1ずつ増加させる
+    n.*.*:nは根本的なアルゴリズムの変更や、新たな種の追加の際に1ずつ増加させる
+    上位のバージョンNo.の変更の際、下位のバージョンNo.は0にリセットされる
+"""
+
 def main():
     from SeaweedBedSimulationSystemExecuter.make_text_file import MakeTextFile
     from SeaweedBedSimulationSystemExecuter.db_connector import DBConnector
@@ -13,7 +22,7 @@ def main():
     #実行環境確認
     print("Python executable in use:")
     print(sys.executable)
-    print("[SYSTEM VERSION] 1.0.0")
+    print("[SYSTEM VERSION] " + simulation_version)
 
     # C++ 実行ファイルのパス（適宜修正）
     executable_path = "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/src/cmake-build-debug/SeaweedBedSimulationSystem"
@@ -24,7 +33,7 @@ def main():
     # GraphPlotterを使用してグラフを描画
     graph_plotter.graph_plottor(normal_data_blocks, test_data_blocks)
 
-    db_show.db_show()
+    db_show.update(simulation_version)
 
     # dataをtextファイルとして保存
     for i, block in enumerate(normal_data_blocks):
