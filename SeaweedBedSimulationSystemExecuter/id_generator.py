@@ -13,9 +13,6 @@ class IDGenerator:
         return random_hex_string
 
     def get_config_file_paths_in_folder(self, folder_path):
-
-        import os
-
         """
         指定されたフォルダ内にあるテキストファイル（.txt）のフルパスのリストを取得します。
 
@@ -26,6 +23,8 @@ class IDGenerator:
             list: テキストファイルのフルパスのリスト。
                   フォルダが存在しない場合や、テキストファイルが見つからない場合は空のリストを返します。
         """
+        import os
+
         text_files = []
         # 指定されたパスが存在し、それがフォルダであるかを確認
         if not os.path.isdir(folder_path):
@@ -37,7 +36,7 @@ class IDGenerator:
             for item_name in os.listdir(folder_path):
                 # アイテムのフルパスを作成
                 item_path = os.path.join(folder_path, item_name)
-                # アイテムがファイルであり、かつ拡張子が '.txt' であるかを確認
+                # アイテムがファイルであり、かつ拡張子が '.yml' であるかを確認
                 if os.path.isfile(item_path) and item_name.lower().endswith('.yml'):
                     text_files.append(item_path)
         except OSError as e:
@@ -45,7 +44,7 @@ class IDGenerator:
             return []  # エラー発生時も空のリストを返す
 
         if not text_files:
-            print(f"情報: フォルダ '{folder_path}' 内にテキストファイル（.txt）は見つかりませんでした。")
+            print(f"情報: フォルダ '{folder_path}' 内にテキストファイル（.yml）は見つかりませんでした。")
 
         return text_files
 
