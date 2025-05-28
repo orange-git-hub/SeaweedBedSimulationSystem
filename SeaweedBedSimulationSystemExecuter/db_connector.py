@@ -26,6 +26,15 @@ class DBConnector:
             print(f"エラーが発生しました: {e}")
             return None
 
+    # データセットを一意に識別するためのidを生成する関数
+    def generate_data_set_id(self):
+        import secrets
+
+        # 8バイトのランダムなバイト列を16進数文字列に変換 (8バイト * 2文字/バイト = 16文字)
+        random_hex_string = secrets.token_hex(8)
+
+        print(f"生成された16進数 (secrets): {random_hex_string}")
+        print(f"文字列長: {len(random_hex_string)}")
 
     def db_update(self,simulation_version):
 
@@ -45,7 +54,9 @@ class DBConnector:
         try:
             # --- プロパティの準備 ---
 
-            properties_to_add = {
+            result_id = self.generate_data_set_id()
+
+            properties_add_to_master_table = {
 
                 #simulation_version
                 "system_version": {
@@ -57,37 +68,31 @@ class DBConnector:
                         }
                     ]
                 },
-                #config_text (外部URLを指定)
+                #config_text_set_id
                 "config_text": {
-                    "files": [
+                    "title": [
                         {
-                            "name": "configuration_used.txt",  # Notion上での表示名
-                            "type": "external",
-                            "external": {
-                                "url": "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml"
+                            "text": {
+                                "content": self.generate_data_set_id()
                             }
                         }
                     ]
                 },
-                #result_text (外部URLを指定)
+                #result_text set_id
                 "result_text": {
-                    "files": [
+                    "title": [
                         {
-                            "name": "simulation_result.log",  # Notion上での表示名
-                            "type": "external",
-                            "external": {
-                                "url": "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/result/result_text/normal_data_feed_amount_change_0.txt"
+                            "text": {
+                                "content": result_id
                             }
                         }
                     ]
                 },
                 "result_graph": {
-                    "files": [
+                    "title": [
                         {
-                            "name": "simulation_result.log",
-                            "type": "external",
-                            "external":{
-                                "url": "https://drive.google.com/file/d/1zUmzE1Sypf-oDaXdMeok_0k1v2xGpdBS/view?usp=drive_link"
+                            "text": {
+                                "content": result_id
                             }
                         }
                     ]
