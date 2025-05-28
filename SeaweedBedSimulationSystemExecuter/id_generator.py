@@ -10,6 +10,8 @@ class IDGenerator:
         print(f"生成された16進数 (secrets): {random_hex_string}")
         print(f"文字列長: {len(random_hex_string)}")
 
+        return random_hex_string
+
     def get_config_file_paths_in_folder(self, folder_path):
 
         import os

@@ -115,6 +115,8 @@ class MakeTextFile:
             print(f"ファイル '{file.get('name')}' (ID: {file.get('id')}) をGoogle Driveに作成しました。")
             print(f"リンク: {file.get('webViewLink')}")
 
+            return file.get('webViewLink')
+
         except HttpError as error:
             print(f"Google Drive APIでエラーが発生しました: {error}")
         except Exception as e:

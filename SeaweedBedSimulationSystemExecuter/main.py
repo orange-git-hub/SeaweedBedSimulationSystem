@@ -15,7 +15,7 @@ def main():
     from SeaweedBedSimulationSystemExecuter.data_set_maker import DataSetMaker
     from SeaweedBedSimulationSystemExecuter.graph_plotter import GraphPlotter
     text_file_maker = MakeTextFile()
-    db_show = DBConnector()
+    db_connector = DBConnector()
     data_set_maker = DataSetMaker()
     graph_plotter = GraphPlotter()
 
@@ -33,23 +33,24 @@ def main():
     # GraphPlotterを使用してグラフを描画
     graph_plotter.graph_plottor(normal_data_blocks, test_data_blocks)
 
-    db_show.db_update(simulation_version)
 
-    # dataをtextファイルとして保存
+    # dataをtextファイルとしてGDriveに保存,リンクを取得
+    result_text_link_array = []
     for i, block in enumerate(normal_data_blocks):
         # ファイル名をタイトルとインデックスから生成（重複を避けるため）
         # ファイル名に使えない文字を置換するなどの処理を追加するとより堅牢になります。
         safe_title = "".join(c if c.isalnum() else "_" for c in block['title'])
         file_name = f"normal_data_{safe_title}_{i}.txt"
-        text_file_maker.save_data_to_file(block["data"], file_name)
+        result_text_link_array.append(text_file_maker.save_data_to_file(block["data"], file_name))
 
     for i, block in enumerate(test_data_blocks):
         # ファイル名をタイトルとインデックスから生成
         safe_title = "".join(c if c.isalnum() else "_" for c in block['title'])
         file_name = f"test_data_{safe_title}_{i}.txt"
-        text_file_maker.save_data_to_file(block["data"], file_name)
+        result_text_link_array.append(text_file_maker.save_data_to_file(block["data"], file_name))
 
-
+    # master_tableを更新
+    db_connector.update_master_table(simulation_version,result_text_link_array)
 
 if __name__ == "__main__":
     main()
