@@ -1,15 +1,46 @@
 
 class DBConnector:
+
+    # ファイルパスを引数として、ファイルのハッシュを作成する関数
+    def make_hush(self,file_path):
+        import hashlib
+
+        try:
+            #ハッシュオブジェクトの作成
+            hasher = hashlib.sha256()
+
+            # ファイルをバイナリモードで読み込み
+            with open(file_path, 'rb') as f:
+                # ファイルをチャンクごとに読み込んでハッシュを更新
+                # これにより、大きなファイルでもメモリを効率的に使用できる
+                while chunk := f.read(4096):  # 4KBずつ読み込む
+                    hasher.update(chunk)
+
+            # 計算されたハッシュ値を16進数文字列として返す
+            return hasher.hexdigest()
+
+        except FileNotFoundError:
+            print(f"エラー: ファイルが見つかりません - {file_path}")
+            return None
+        except Exception as e:
+            print(f"エラーが発生しました: {e}")
+            return None
+
+
     def db_update(self,simulation_version):
 
         from notion_client import Client
         import datetime  # 日付の自動入力用
 
-        NOTION_TOKEN = "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"  # ご自身のAPIキーに置き換え
-        DATABASE_ID = "1ffdff0c8e2e805683ebe417bde8611f"  # ご自身のデータベースIDに置き換え
+        notion_token = "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"  # Notion API キー
+        master_table_id = "1ffdff0c8e2e805683ebe417bde8611f"  # master_table の id
+        config_table_id = "200dff0c8e2e807298b3ca8844fbcebd" # config_text_table の id
+        result_text_table_id = "200dff0c8e2e80489434dd2351b1515f" # result_text_table の id
+        result_graph_table_id = "200dff0c8e2e805196d2f36627066109" # result_graph_table の id
+        system_version_table_id = "200dff0c8e2e80378958eaa1396544a6" # system_version_table の id
 
         # Notionクライアントを初期化
-        notion = Client(auth=NOTION_TOKEN)
+        notion = Client(auth = notion_token)
 
         try:
             # --- プロパティの準備 ---
@@ -77,7 +108,7 @@ class DBConnector:
 
             # Notionデータベースに新しいページを作成
             created_page = notion.pages.create(
-                parent={"database_id": DATABASE_ID},
+                parent={"database_id": master_table_id},
                 properties=properties_to_add
             )
 
