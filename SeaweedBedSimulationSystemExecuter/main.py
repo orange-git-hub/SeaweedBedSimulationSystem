@@ -33,7 +33,7 @@ def main():
     # GraphPlotterを使用してグラフを描画
     graph_plotter.graph_plottor(normal_data_blocks, test_data_blocks)
 
-    db_show.update(simulation_version)
+    db_show.db_update(simulation_version)
 
     # dataをtextファイルとして保存
     for i, block in enumerate(normal_data_blocks):
