@@ -33,7 +33,6 @@ class DBConnector:
                             "name": "configuration_used.txt",  # Notion上での表示名
                             "type": "external",
                             "external": {
-                                # TODO: 実際のconfigファイルのURLに置き換えてください
                                 "url": "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml"
                             }
                         }
@@ -46,7 +45,6 @@ class DBConnector:
                             "name": "simulation_result.log",  # Notion上での表示名
                             "type": "external",
                             "external": {
-                                # TODO: 実際のresultファイルのURLに置き換えてください
                                 "url": "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/result/result_text/normal_data_feed_amount_change_0.txt"
                             }
                         }
