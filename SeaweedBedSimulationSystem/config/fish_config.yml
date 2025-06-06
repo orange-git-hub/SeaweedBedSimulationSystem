@@ -1,0 +1,13 @@
+initial_body_weight: 0.1
+initial_body_length: 0.45
+initial_age: 0
+initial_day_age: 0
+initial_population: 3
+sl_growth_const: 1.03
+allometric_scaling_coefficient: 3.4
+feed_value: 0.0355
+max_age: 5475
+bring_in_day: 2000
+breedable_day_age: 365
+breedable_month: 1
+reproductive_rate: 1

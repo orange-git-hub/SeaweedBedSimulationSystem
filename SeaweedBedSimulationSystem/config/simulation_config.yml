@@ -1,0 +1,32 @@
+initial_day: 1
+initial_month: 1
+initial_year: 2000
+simulation_day_range: 5475
+is_allow_breeding_fish: 0
+is_allow_breeding_algae: 1
+water_temperature_monthly_data:
+  - 14
+  - 14.5
+  - 16.7
+  - 18.4
+  - 20.5
+  - 22.2
+  - 24.8
+  - 23.9
+  - 22.3
+  - 19
+  - 16.5
+  - 15.5
+global_horizontal_irradiance:
+  - 13
+  - 14.7
+  - 17.3
+  - 18.4
+  - 15.7
+  - 19.2
+  - 19
+  - 13.3
+  - 10.4
+  - 9.3
+  - 7.6
+  - 10.3
