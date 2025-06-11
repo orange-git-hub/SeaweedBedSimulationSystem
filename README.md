@@ -112,19 +112,27 @@ C++コアの実行、結果の処理、外部サービスとの連携を担当�
       * `main.py` 内の `config_folder_path`(SeaweedBedSimulationSystem/configのパス)
       * C++ソースコード内のコンフィグファイルへのパス
       * `algae.cpp`,`daily_photosynthesis_rate_generator.cpp`,`daily_temperature_generator.cpp`,`fish.cpp`,`main.cpp`内のパスをご自身の環境に合わせて修正してください。
-5.  **実行:**
+
+5.  **gdriveに関する設定:**
+   * **  `main.py` 内の`gdrive_folder_id`をご自身の環境に合わせて変更
+
+6.  **NotionDataBaseの設定:**
+   * Notion内で以下のようなDataBaseを作成してください。
+      * **seaweed_bed_simulation_system_master_table**
+        * (ID型, id), (タイトル型, simulation_version), (リレーション, config_text_set_id), (リレーション, result_text_set_id), (result_graph_set_id)
+      * **config_text_table**
+        * (タイトル型, config_text_set_id), (config_text_file)
+        * config_text_set_idをmaster_tableのconfig_text_set_idのリレーション先に設定
+      * **result_text_table**
+        * (タイトル型, result_text_set_id), (result_text_file)
+        * result_text_set_idをmaster_tableのresult_text_set_idのリレーション先に設定 
+      * **result_graph_table**
+        * (タイトル型, result_graph_set_id), (result_graph_file)
+        * result_graph_set_idをmaster_tableのresult_graph_set_idのリレーション先に設定 
+
+7. **実行:**
    * すべての設定が完了したら、Pythonのメインスクリプトを実行します。
     ```bash
     python main.py
     ```
    * 初回実行時には、ブラウザが起動しGoogleアカウントでの認証が求められます。承認すると `token.json` が生成され、次回以降は自動で認証が行われます。
-
-## バージョン管理
-
-本プロジェクトのバージョンは `main.py` の `simulation_version` 変数で管理されます。バージョニングルールは以下の通りです。
-
-* `n.*.*` (メジャー): 根本的なアルゴリズムの変更や、新たな種の追加。
-* `*.n.*` (マイナー): 既存の種に関するアルゴリズムの変更や、追加。
-* `*.*.n` (パッチ): 結果の変化を伴わないリファクタリングやバグ修正。
-
-**注意:** 同じバージョン番号で複数回実行しても、結果は上書きされず別々に記録されます（IDで一意に識別されるため）。しかし、変更内容を追跡するため、コードを修正した際は適切にバージョンを更新することが推奨されます。

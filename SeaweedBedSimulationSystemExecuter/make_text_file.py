@@ -10,7 +10,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseUpload, MediaFileUpload
 
 # Google Drive APIのスコープ (ファイルの作成と管理を許可)
-SCOPES = ['https://www.googleapis.com/auth/drive.file']
+SCOPES = ['']
 
 
 class MakeTextFile:

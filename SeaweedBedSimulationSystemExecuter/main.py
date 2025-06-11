@@ -29,9 +29,9 @@ def main():
     print("[SYSTEM VERSION] " + simulation_version)
     # endregion
 
-    # C++ 実行ファイルのパス（適宜修正）
-    executable_path = "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/src/cmake-build-debug/SeaweedBedSimulationSystem"
-    config_folder_path = "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config"
+    executable_path = "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/src/cmake-build-debug/SeaweedBedSimulationSystem" # C++ 実行ファイルのパス
+    config_folder_path = "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config" # Configフォルダへのパス
+    target_folder_id = "" #保存先のGdriveID
 
 
     # DataSetMakerを使用して実行結果のデータセット配列brockを作成
@@ -62,7 +62,7 @@ def main():
         # share_publicly=True を指定して、共有可能なリンクを取得するようにする
         gdrive_link = text_file_maker.upload_local_file_to_drive(
             local_path,
-            "14dh2tWvT0L7-NzRdACq0NvuXF8B59DdB",  # target_folder_id
+            target_folder_id,  # target_folder_id
             f"config_file_{i + 1}.yml",  # remote_file_name
             share_publicly=True  # 共有設定をTrueにする
         )
@@ -75,7 +75,7 @@ def main():
     # endregion
 
     # GraphPlotterを使用してグラフを描画、GDriveに保存、リンクを取得
-    result_graph_link_array = graph_plotter.plot_and_save_to_gdrive(normal_data_blocks, test_data_blocks, db_connector, "1aJcsbPARZ9IiAhsx7vrgGe_8z8vVCQmx")
+    result_graph_link_array = graph_plotter.plot_and_save_to_gdrive(normal_data_blocks, test_data_blocks, db_connector, target_folder_id)
 
     # tableを更新
     db_connector.update_master_table(simulation_version, result_text_link_array, config_link_array, result_graph_link_array, config_folder_path)

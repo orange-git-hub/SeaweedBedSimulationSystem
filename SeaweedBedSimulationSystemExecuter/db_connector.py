@@ -14,7 +14,7 @@ from SeaweedBedSimulationSystemExecuter.id_generator import IDGenerator
 class DBConnector:
     # Google Drive API のスコープ。ファイルをアップロードし、権限を変更するために 'drive' を使用します。
     # より限定的なスコープ 'drive.file' でも良い場合がありますが、権限設定には 'drive' が確実です。
-    DRIVE_SCOPES = ['https://www.googleapis.com/auth/drive']
+    DRIVE_SCOPES = ['']
     # 認証情報を保存するファイルのパス (credentials.json はGoogle Cloud Consoleからダウンロード)
     DRIVE_CREDENTIALS_FILE = 'credentials.json'
     # アクセストークンとリフレッシュトークンを保存するファイルのパス (初回認証後に自動生成)
@@ -25,12 +25,12 @@ class DBConnector:
         DBConnectorの初期化。
         Notionクライアントと、Google Drive APIサービスを初期化（または初期化準備）します。
         """
-        # Notion関連の初期化 (既存のコード)
-        self.notion_token = "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"  # セキュリティのため、直接埋め込むのは非推奨
-        self.master_table_id = "1ffdff0c8e2e805683ebe417bde8611f"
-        self.config_table_id = "200dff0c8e2e807298b3ca8844fbcebd"
-        self.result_text_table_id = "200dff0c8e2e80489434dd2351b1515f"
-        self.result_graph_table_id = "200dff0c8e2e805196d2f36627066109"
+        # Notion関連の初期化
+        self.notion_token = ""
+        self.master_table_id = ""
+        self.config_table_id = ""
+        self.result_text_table_id = ""
+        self.result_graph_table_id = ""
         self.notion = Client(auth=self.notion_token)
         self.id_generator = IDGenerator()
 
