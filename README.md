@@ -111,7 +111,7 @@ C++コアの実行、結果の処理、外部サービスとの連携を担当�
       * `main.py` 内の `executable_path`(SeaweedBedSimulationSystem/cmake-build-debug/内の実行ファイルパス),
       * `main.py` 内の `config_folder_path`(SeaweedBedSimulationSystem/configのパス)
       * C++ソースコード内のコンフィグファイルへのパス
-
+      * `algae.cpp`,`daily_photosynthesis_rate_generator.cpp`,`daily_temperature_generator.cpp`,`fish.cpp`,`main.cpp`内のパスをご自身の環境に合わせて修正してください。
 5.  **実行:**
    * すべての設定が完了したら、Pythonのメインスクリプトを実行します。
     ```bash

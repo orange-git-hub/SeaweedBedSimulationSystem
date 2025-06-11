@@ -14,7 +14,7 @@
 
 // グローバルインスタンスの定義
 daily_photosynthesis_rate_generator global_daily_photosynthesis_rate_generator(
-    "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml"
+    "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml"
 );
 
 daily_photosynthesis_rate_generator::daily_photosynthesis_rate_generator(const std::string& config_path)

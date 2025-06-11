@@ -13,7 +13,7 @@
 
 // グローバルインスタンスの定義
 daily_temperature_generator global_daily_temperature_generator(
-    "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml"
+    "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml"
 );
 
 

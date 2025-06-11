@@ -11,10 +11,10 @@
 #include "timer.h"
 #include "daily_temperature_generator.h"
 
-config_loader simulation_config = config_loader("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
-config_loader algae_config = config_loader("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
-daily_photosynthesis_rate_generator photosynthesis_rate_generator = daily_photosynthesis_rate_generator("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
-daily_temperature_generator daily_temperature_generator("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
+config_loader simulation_config = config_loader("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
+config_loader algae_config = config_loader("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
+daily_photosynthesis_rate_generator photosynthesis_rate_generator = daily_photosynthesis_rate_generator("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
+daily_temperature_generator daily_temperature_generator("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
 living_thing living_thing();
 
 

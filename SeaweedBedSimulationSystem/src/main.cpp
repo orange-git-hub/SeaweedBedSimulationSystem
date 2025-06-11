@@ -14,13 +14,13 @@
 #include "daily_temperature_generator.h"
 #include "daily_photosynthesis_rate_generator.h"
 
-timer timer("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
+timer timer("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
 int main()
 {
     // 計測開始のためのタイマーと設定ファイルの読み込み
-    config_loader fish_config("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml");
-    config_loader algae_config("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
-    config_loader simulation_config("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
+    config_loader fish_config("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml");
+    config_loader algae_config("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
+    config_loader simulation_config("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/simulation_config.yml");
 
     // 各生物に増殖を許可するかどうか
     bool is_allow_breeding_fish = std::stoi(simulation_config.get_value("is_allow_breeding_fish"));
@@ -64,7 +64,7 @@ int main()
     // 各個体に対する藻類インスタンス生成
     for (int i = 0; i < initial_algae_population; i++)
     {
-        algae_instance_array.emplace_back(i, "/Users/ishikawasoraLibrary/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaweedBedSimulationSystem/config/algae_config.yml");
+        algae_instance_array.emplace_back(i, "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
     }
 
     std::cout << "Success make instance" << std::endl;
@@ -173,7 +173,7 @@ int main()
                 unsigned long current_array_size = algae_instance_array.size();
                 for (int k = 1; k <= reproduce_number; k++)
                 {
-                    algae_instance_array.emplace_back(current_array_size + k, "/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
+                    algae_instance_array.emplace_back(current_array_size + k, "SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/algae_config.yml");
                     //algae_instance_array[algae_instance_array.size() - 1].initializer(); // インスタンス化したときにコンストラクタが正しく動作していない可能性があるため一時的に初期化関数を用いる。
                     std::cout << "[DEBUG] Success make new algae instance" << std::endl;
                 }

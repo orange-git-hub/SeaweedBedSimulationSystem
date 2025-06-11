@@ -12,11 +12,11 @@
 #include <stdexcept>
 #include <string>
 
-config_loader config("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml");
+config_loader config("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml");
 living_thing living_thing();
 
 
-fish::fish(int id_argument) : animal("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml")
+fish::fish(int id_argument) : animal("SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config/fish_config.yml")
 {
 	// initial_day_age 読み込み
 	try
