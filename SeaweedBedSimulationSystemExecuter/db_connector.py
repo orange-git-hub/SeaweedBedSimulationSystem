@@ -183,12 +183,12 @@ class DBConnector:
             traceback.print_exc()
             return None
 
-    def update_master_table(self, simulation_version, result_text_link_array, config_link_array, result_graph_link_array):
+    def update_master_table(self, simulation_version, result_text_link_array, config_link_array, result_graph_link_array, config_folder_path):
         # Notionクライアントは __init__ で初期化済み (self.notion を使用)
         try:
             # --- プロパティの準備 ---
             result_id = self.id_generator.generate_data_set_id()  # self.id_generator を使用
-            config_hush = self.id_generator.make_hush(self.id_generator.get_config_file_paths_in_folder("/Users/ishikawasora/Library/Mobile Documents/com~apple~CloudDocs/AE1/特別研究/SeaWeedBedSimulationSystemBase/SeaweedBedSimulationSystem/config"))
+            config_hush = self.id_generator.make_hush(self.id_generator.get_config_file_paths_in_folder(config_folder_path))
 
             # (config_files_for_notion の準備処理は変更なし)
             config_files_for_notion = []

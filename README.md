@@ -107,8 +107,9 @@ C++コアの実行、結果の処理、外部サービスとの連携を担当�
    * **Notion API:** `db_connector.py` を開き、以下の変数を自分の環境に合わせて設定します。
       * `notion_token`
       * `master_table_id`, `config_table_id`, `result_text_table_id`, `result_graph_table_id`
-   * **ファイルパス:** `main.py` および各ソースコード内にハードコードされているファイルパス (`/Users/ishikawasora/...`) を、ご自身の環境に合わせて修正してください。特に以下の設定は重要です。
-      * `main.py` 内の `executable_path`
+   * **ファイルパス:** `main.py` および各ソースコード内にハードコードされているファイルパスを、ご自身の環境に合わせて修正してください。特に以下の設定は重要です。
+      * `main.py` 内の `executable_path`(SeaweedBedSimulationSystem/cmake-build-debug/内の実行ファイルパス),
+      * `main.py` 内の `config_folder_path`(SeaweedBedSimulationSystem/configのパス)
       * C++ソースコード内のコンフィグファイルへのパス
 
 5.  **実行:**
